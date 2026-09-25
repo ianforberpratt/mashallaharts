@@ -13,6 +13,8 @@
   --shadow: 0 6px 24px rgba(69, 66, 57, 0.08);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=Noto+Sans+Devanagari:wght@400;600&display=swap');
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -66,13 +68,45 @@ header.site-header {
 }
 
 .brand-mark {
-  width: 34px;
-  height: 34px;
+  width: 60px;
+  height: 60px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  background: #fffdf8;
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: var(--shadow);
 }
 .brand-mark img { width: 100%; height: 100%; object-fit: contain; }
+
+header.site-header.transparent .brand-mark {
+  width: 72px;
+  height: 72px;
+}
+
+/* Google Translate widget */
+#google_translate_element {
+  margin-left: 18px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.goog-te-gadget { font-family: inherit !important; font-size: 0 !important; }
+.goog-te-gadget .goog-te-combo {
+  font-size: 0.86rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fffdf8;
+  color: var(--ink);
+}
+header.site-header.transparent .goog-te-gadget .goog-te-combo {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border-color: rgba(255,255,255,0.5);
+}
+.goog-te-banner-frame { display: none !important; }
+body { top: 0 !important; }
 
 nav.main-nav a {
   margin-left: 22px;
@@ -83,6 +117,116 @@ nav.main-nav a {
 }
 
 nav.main-nav a:hover { color: var(--leaf-dark); }
+
+/* Transparent overlay header, used on the full-bleed hero page */
+header.site-header.transparent {
+  position: fixed;
+  width: 100%;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  backdrop-filter: none;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+header.site-header.transparent .brand,
+header.site-header.transparent nav.main-nav a {
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.35);
+}
+header.site-header.transparent nav.main-nav a:hover { color: var(--saffron); }
+header.site-header.transparent.scrolled {
+  background: rgba(250, 246, 238, 0.96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+}
+header.site-header.transparent.scrolled .brand,
+header.site-header.transparent.scrolled nav.main-nav a {
+  color: var(--ink-soft);
+  text-shadow: none;
+}
+header.site-header.transparent.scrolled .brand { color: var(--ink); }
+
+/* Full-bleed power hero */
+.hero-full {
+  position: relative;
+  min-height: 96vh;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.hero-full::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(30,28,24,0.15) 0%, rgba(30,28,24,0.35) 55%, rgba(20,19,16,0.82) 100%);
+}
+.hero-full-inner {
+  position: relative;
+  z-index: 2;
+  padding: 0 24px 64px;
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 100%;
+  color: #fff;
+}
+.hero-full .eyebrow { color: var(--saffron); }
+.hero-full h1 {
+  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  margin: 10px 0 20px;
+  max-width: 780px;
+}
+.hero-full p.lede-full {
+  max-width: 560px;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: rgba(255,255,255,0.92);
+  margin: 0 0 30px;
+}
+.hero-full .hero-actions { justify-content: flex-start; }
+.hero-full .btn-primary { background: var(--saffron-dark); color: #241f16; font-weight: 600; }
+.hero-full .btn-primary:hover { background: var(--saffron); }
+.hero-full .btn-outline { border-color: #fff; color: #fff; }
+.hero-full .btn-outline:hover { background: #fff; color: var(--ink); }
+
+.scroll-cue {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  z-index: 2;
+  color: #fff;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.85;
+}
+.scroll-cue .arrow { animation: bob 1.6s ease-in-out infinite; }
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+/* Devanagari lines */
+.hindi {
+  font-family: "Noto Sans Devanagari", "Georgia", serif;
+  font-weight: 600;
+}
+
+/* Placeholder highlight — nothing ships unfilled */
+.placeholder {
+  background: #fff3b0;
+  color: #6b5a00;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: 600;
+}
 
 /* Hero */
 .hero {
@@ -285,6 +429,47 @@ section.alt { background: var(--cream-dark); }
 .social-row a { text-decoration: none; color: var(--ink-soft); border: 1px solid var(--line); padding: 8px 16px; border-radius: 999px; font-size: 0.9rem; }
 .social-row a:hover { border-color: var(--leaf); color: var(--leaf-dark); }
 
+/* Narrow prose blocks (home story sections, about, promise) */
+.prose-block {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.prose-block h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin: 6px 0 18px; }
+.prose-block p { color: var(--ink-soft); text-align: left; }
+.prose-block blockquote {
+  margin: 24px 0 0;
+  padding: 20px 24px;
+  border-left: 3px solid var(--leaf);
+  background: var(--cream-dark);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-style: italic;
+  text-align: left;
+  color: var(--ink);
+}
+
+.shop-list { max-width: 780px; margin: 0 auto; }
+.shop-item { padding: 26px 0; border-bottom: 1px solid var(--line); }
+.shop-item:last-child { border-bottom: none; }
+.shop-item h3 { margin: 0 0 8px; }
+.shop-item p { margin: 0; color: var(--ink-soft); }
+
+.family-people {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 22px;
+  margin-top: 32px;
+  text-align: left;
+}
+.family-people .person {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.family-people .person h4 { margin: 0 0 6px; }
+.family-people .person p { margin: 0; color: var(--ink-soft); font-size: 0.94rem; }
+
 /* Footer */
 footer.site-footer {
   border-top: 1px solid var(--line);
@@ -295,6 +480,7 @@ footer.site-footer {
 }
 
 footer.site-footer p { margin: 4px 0; }
+footer.site-footer .footer-links a { color: var(--ink-soft); margin: 0 8px; }
 
 /* You Are Important note page */
 .note-page {
@@ -316,7 +502,7 @@ footer.site-footer p { margin: 4px 0; }
   text-align: center;
 }
 
-.note-card .brand-mark { width: 56px; height: 56px; margin: 0 auto 20px; }
+.note-card .brand-mark { width: 84px; height: 84px; margin: 0 auto 20px; }
 
 .note-card h1 {
   font-family: "Segoe Script", "Bradley Hand", "Iowan Old Style", cursive, serif;
