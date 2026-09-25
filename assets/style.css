@@ -1,15 +1,16 @@
 :root {
-  --cream: #faf6ee;
-  --cream-dark: #f1e9d8;
-  --ink: #2e2a24;
-  --ink-soft: #5c5548;
-  --saffron: #d99a2b;
-  --saffron-dark: #b87f1e;
-  --leaf: #4a6b4d;
-  --leaf-dark: #385338;
-  --line: #e3d9c2;
+  --cream: #fbf9f3;
+  --cream-dark: #f2ede1;
+  --ink: #454239;
+  --ink-soft: #736d60;
+  --saffron: #e3c765;
+  --saffron-dark: #c7a83f;
+  --leaf: #8ea77b;
+  --leaf-dark: #6a8459;
+  --leaf-pale: #dbe6d2;
+  --line: #e6e0d0;
   --radius: 14px;
-  --shadow: 0 6px 24px rgba(46, 42, 36, 0.08);
+  --shadow: 0 6px 24px rgba(69, 66, 57, 0.08);
 }
 
 * { box-sizing: border-box; }
@@ -67,14 +68,11 @@ header.site-header {
 .brand-mark {
   width: 34px;
   height: 34px;
-  border-radius: 50%;
-  background: var(--leaf);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--cream);
-  font-size: 1rem;
 }
+.brand-mark img { width: 100%; height: 100%; object-fit: contain; }
 
 nav.main-nav a {
   margin-left: 22px;
@@ -179,7 +177,21 @@ section.alt { background: var(--cream-dark); }
   font-size: 0.95rem;
   text-align: center;
   padding: 20px;
+  overflow: hidden;
 }
+.story-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+
+.family-strip {
+  margin-top: 56px;
+  text-align: center;
+}
+.family-strip img {
+  border-radius: var(--radius);
+  max-width: 520px;
+  margin: 0 auto 18px;
+  box-shadow: var(--shadow);
+}
+.family-strip p { max-width: 620px; margin: 0 auto; color: var(--ink-soft); }
 
 .story-text h3 { margin-top: 0; }
 .story-text p { color: var(--ink-soft); }
@@ -210,6 +222,14 @@ section.alt { background: var(--cream-dark); }
   justify-content: center;
   color: var(--ink-soft);
   font-size: 2.4rem;
+  overflow: hidden;
+}
+.card-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.card-price {
+  font-weight: bold;
+  color: var(--leaf-dark);
+  font-size: 1.05rem;
 }
 
 .card-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
@@ -276,7 +296,49 @@ footer.site-footer {
 
 footer.site-footer p { margin: 4px 0; }
 
+/* You Are Important note page */
+.note-page {
+  background: linear-gradient(180deg, var(--leaf-pale) 0%, var(--cream) 55%);
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  padding: 72px 24px;
+}
+
+.note-card {
+  max-width: 640px;
+  margin: 0 auto;
+  background: #fffdf8;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(69, 66, 57, 0.12);
+  padding: 56px 48px;
+  text-align: center;
+}
+
+.note-card .brand-mark { width: 56px; height: 56px; margin: 0 auto 20px; }
+
+.note-card h1 {
+  font-family: "Segoe Script", "Bradley Hand", "Iowan Old Style", cursive, serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+
+.note-card p {
+  font-size: 1.08rem;
+  color: var(--ink-soft);
+  margin: 0 0 18px;
+}
+
+.note-card .signoff {
+  margin-top: 30px;
+  font-style: italic;
+  color: var(--leaf-dark);
+}
+
 @media (max-width: 760px) {
   .story-grid { grid-template-columns: 1fr; }
   nav.main-nav a { margin-left: 14px; font-size: 0.9rem; }
+  .note-card { padding: 40px 26px; }
 }
