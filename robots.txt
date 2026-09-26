@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mashallaharts.com/sitemap.xml

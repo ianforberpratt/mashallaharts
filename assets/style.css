@@ -459,6 +459,39 @@ section.alt { background: var(--cream-dark); }
 .step h3 { margin: 0 0 6px; font-size: 1.05rem; }
 .step p { margin: 0; color: var(--ink-soft); font-size: 0.94rem; }
 
+/* Contact form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+.contact-form label {
+  display: block;
+  font-weight: 600;
+  margin: 18px 0 6px;
+}
+.contact-form label:first-of-type { margin-top: 0; }
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  display: block;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px 14px;
+}
+.contact-form textarea { resize: vertical; line-height: 1.5; }
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--leaf);
+}
+.contact-form button { align-self: flex-start; }
+
 /* Contact */
 .contact-box {
   max-width: 560px;
