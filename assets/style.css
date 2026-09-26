@@ -67,6 +67,16 @@ header.site-header.transparent .nav-row { padding: 18px 24px; }
   font-weight: 700;
   color: var(--ink);
   text-decoration: none;
+  flex-shrink: 0;
+}
+
+nav.main-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px 20px;
+  min-width: 0;
 }
 
 .brand-mark {
@@ -117,20 +127,25 @@ header.site-header.transparent.scrolled .brand-mark img {
   font-family: inherit !important;
   display: inline-flex !important;
   align-items: center;
+  font-size: 0 !important;
+  color: transparent !important;
 }
-/* Hide Google's "powered by" attribution row so the widget stays one compact line */
+/* Hide Google's "powered by" attribution (icon + link + any stray text) so only the dropdown shows */
 .goog-te-gadget > span,
+.goog-te-gadget img,
+.goog-te-gadget a,
 .goog-logo-link,
 .goog-te-gadget-icon {
   display: none !important;
 }
 .goog-te-gadget .goog-te-combo {
-  font-size: 0.82rem;
+  display: inline-block !important;
+  font-size: 0.82rem !important;
   padding: 5px 10px;
   border-radius: 999px;
   border: 1px solid var(--line);
   background: #fffdf8;
-  color: var(--ink);
+  color: var(--ink) !important;
   margin: 0;
 }
 header.site-header.transparent .goog-te-gadget .goog-te-combo {
@@ -142,11 +157,11 @@ header.site-header.transparent .goog-te-gadget .goog-te-combo {
 body { top: 0 !important; }
 
 nav.main-nav a {
-  margin-left: 22px;
   text-decoration: none;
   color: var(--ink-soft);
   font-size: 0.98rem;
   letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 nav.main-nav a:hover { color: var(--leaf-dark); }
