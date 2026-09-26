@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact — Mashallah Arts</title>
+<meta name="description" content="Get in touch with Mashallah Arts — order candles, chai, or paintings, or ask about a custom piece." />
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="nav-row">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><img src="assets/images/logo-wordmark.png" alt="Mashallah Arts logo" /></span>
+    </a>
+    <nav class="main-nav">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="heard-and-seen.html">Our Promise</a>
+      <a href="contact.html">Contact</a>
+      <div id="google_translate_element"></div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom: 12px;">
+  <div class="container">
+    <span class="eyebrow">Contact</span>
+    <h1>Tell us what you'd like</h1>
+    <p class="lede">Ordering candles or chai, asking about a custom painting, planning something for a school or gathering — whatever it is, tell Nargis about it here and she'll write back herself.</p>
+  </div>
+</section>
+
+<section style="padding-top: 8px;">
+  <div class="container" style="max-width: 640px;">
+    <form id="contactForm" class="contact-form">
+      <label for="cf-name">Your name</label>
+      <input type="text" id="cf-name" name="name" required />
+
+      <label for="cf-email">Your email</label>
+      <input type="email" id="cf-email" name="email" required />
+
+      <label for="cf-reason">What's this about?</label>
+      <select id="cf-reason" name="reason">
+        <option value="Custom Art Request">Custom art request</option>
+        <option value="Candle Order">Candle order</option>
+        <option value="Chai Order">Chai order</option>
+        <option value="Painting Inquiry">Painting inquiry</option>
+        <option value="School / Group Order">School or group order</option>
+        <option value="Something Else">Something else</option>
+      </select>
+
+      <label for="cf-message">What would you like?</label>
+      <textarea id="cf-message" name="message" rows="6" placeholder="Tell us about it — sizes, colors, scents, dates, quantities, anything that helps." required></textarea>
+
+      <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Send to Nargis</button>
+      <p style="font-size: 0.85rem; color: var(--ink-soft); margin-top: 10px;">This opens your email app with your message ready to send to Nargis directly.</p>
+    </form>
+
+    <div class="contact-box" style="margin-top: 48px;">
+      <p>Prefer to reach out directly?</p>
+      <a class="email" href="mailto:nargissalmaniforberpratt@gmail.com">nargissalmaniforberpratt@gmail.com</a>
+      <p style="margin-top: 14px;"><a href="tel:+13145862265" style="font-weight:bold; font-size: 1.1rem;">+1 (314) 586-2265</a></p>
+      <div class="social-row">
+        <a href="#"><span class="placeholder">Social handles — to be added</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; <span id="year"></span> Mashallah Arts &middot; A registered fictitious name of Nargis Salmani Forber-Pratt, Sole Proprietor &middot; Ballwin, Missouri</p>
+    <p class="footer-links"><a href="business-info.html">Business Info</a></p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var name = document.getElementById('cf-name').value;
+  var email = document.getElementById('cf-email').value;
+  var reason = document.getElementById('cf-reason').value;
+  var message = document.getElementById('cf-message').value;
+  var subject = encodeURIComponent('Mashallah Arts — ' + reason);
+  var body = encodeURIComponent(
+    'Name: ' + name + '\n' +
+    'Email: ' + email + '\n' +
+    'Reason: ' + reason + '\n\n' +
+    message
+  );
+  window.location.href = 'mailto:nargissalmaniforberpratt@gmail.com?subject=' + subject + '&body=' + body;
+});
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: false }, 'google_translate_element');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
