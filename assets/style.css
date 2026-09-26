@@ -79,9 +79,27 @@ header.site-header.transparent .nav-row { padding: 18px 24px; }
   display: block;
 }
 
+header.site-header.transparent .brand-mark {
+  background: rgba(24, 21, 18, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 14px;
+  padding: 8px 14px;
+  transition: background 0.3s ease, padding 0.3s ease;
+}
 header.site-header.transparent .brand-mark img {
-  height: 110px;
-  filter: drop-shadow(0 2px 10px rgba(0,0,0,0.45));
+  height: 82px;
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.3));
+}
+header.site-header.transparent.scrolled .brand-mark {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding: 0;
+}
+header.site-header.transparent.scrolled .brand-mark img {
+  filter: none;
+  height: 56px;
 }
 
 @media (max-width: 760px) {
@@ -91,18 +109,29 @@ header.site-header.transparent .brand-mark img {
 
 /* Google Translate widget */
 #google_translate_element {
-  margin-left: 18px;
-  display: inline-block;
-  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 }
-.goog-te-gadget { font-family: inherit !important; font-size: 0 !important; }
+.goog-te-gadget {
+  font-family: inherit !important;
+  display: inline-flex !important;
+  align-items: center;
+}
+/* Hide Google's "powered by" attribution row so the widget stays one compact line */
+.goog-te-gadget > span,
+.goog-logo-link,
+.goog-te-gadget-icon {
+  display: none !important;
+}
 .goog-te-gadget .goog-te-combo {
-  font-size: 0.86rem;
-  padding: 6px 10px;
+  font-size: 0.82rem;
+  padding: 5px 10px;
   border-radius: 999px;
   border: 1px solid var(--line);
   background: #fffdf8;
   color: var(--ink);
+  margin: 0;
 }
 header.site-header.transparent .goog-te-gadget .goog-te-combo {
   background: rgba(255,255,255,0.15);
